@@ -22,7 +22,7 @@ const Template: StoryFn<typeof VirtualScroller> = (_, { allArgs }) => {
     components: { VirtualScroller },
     setup: ()=> ({ props: allArgs }),
     template: `
-      <VirtualScroller v-bind="props" style="padding: 16px">
+      <VirtualScroller v-bind="props" style="height: 600px; padding: 16px">
         <template v-slot="{ itemsToShow }">
           <b style="position: absolute; top: 0; right: 0;">
             Rendered items {{itemsToShow.length}} of {{ props.items.length }}

@@ -1,5 +1,5 @@
 <template>
-  <div ref="virtualScroller" @scroll="onScroll" :class="`${baseClass} scroll--y`">
+  <div ref="virtualScroller" @scroll="onScroll" :class="`${baseClass}`">
     <div :style="wrapperStyles">
       <div :style="listStyles">
         <slot :itemsToShow="itemsToShow" />
@@ -111,5 +111,6 @@ export default defineComponent({
   .virtual-scroller {
     height: 100%;
     position: relative;
+    overflow: auto;
   }
 </style>

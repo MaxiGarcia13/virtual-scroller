@@ -27,9 +27,6 @@
   "homepage": "https://github.com/MaxiGarcia13/virtual-scroller#readme",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.2.20",
-    "@storybook/addon-essentials": "^8.0.0",
-    "@storybook/addon-interactions": "^8.0.0",
-    "@storybook/addon-links": "^8.0.0",
     "@storybook/blocks": "^8.0.0",
     "@storybook/test": "^8.0.0",
     "@storybook/vue3": "^8.0.0",
@@ -39,6 +36,10 @@
     "eslint": "^8.57.0",
     "eslint-plugin-storybook": "^0.8.0",
     "eslint-plugin-vue": "^9.23.0",
-    "storybook": "^8.0.0"
+    "storybook": "^8.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.1.6",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vue-tsc": "^1.8.27"
   }
 }

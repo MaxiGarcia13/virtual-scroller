@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "⚡️ Blazing fast scrolling for any amount of data for Vue 3",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "build": "vue-tsc && vite build"
   },
   "keywords": [
     "vue",
@@ -24,9 +23,5 @@
   "homepage": "https://github.com/MaxiGarcia13/virtual-scroller#readme",
   "dependencies": {
     "vue": "^3.4.21"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
-    "vite": "^5.1.6"
   }
 }

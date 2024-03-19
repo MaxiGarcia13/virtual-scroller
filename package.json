@@ -1,7 +1,7 @@
 {
-  "name": "virtual-scroller",
+  "name": "vue-ui-components",
   "version": "1.0.0",
-  "description": "⚡️ Blazing fast scrolling for any amount of data",
+  "description": "UI components for Vue.js",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -12,8 +12,13 @@
   },
   "keywords": [
     "vue",
-    "vuejs",
-    "plugin"
+    "vue.js",
+    "vue2",
+    "vue3",
+    "ui library",
+    "component library",
+    "fluent",
+    "unstyled"
   ],
   "repository": {
     "type": "git",

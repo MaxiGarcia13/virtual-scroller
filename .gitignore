@@ -10,3 +10,9 @@ node_modules/
 
 # Output of 'npm pack'
 *.tgz
+
+.vscode/*
+!.vscode/extensions.json
+
+.DS_Store
+dist

@@ -20,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/MaxiGarcia13/virtual-scroller/issues"
   },
-  "homepage": "https://github.com/MaxiGarcia13/virtual-scroller#readme"
+  "homepage": "https://github.com/MaxiGarcia13/virtual-scroller#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0"
+  }
 }

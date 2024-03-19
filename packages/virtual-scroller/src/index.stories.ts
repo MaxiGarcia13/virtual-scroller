@@ -18,7 +18,7 @@ export default {
 } as Meta<typeof VirtualScroller>;
 
 const Template: StoryFn<typeof VirtualScroller> = (_, { allArgs }) => {
-    return ({
+  return ({
     components: { VirtualScroller },
     setup: ()=> ({ props: allArgs }),
     template: `

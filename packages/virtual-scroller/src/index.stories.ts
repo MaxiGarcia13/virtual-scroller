@@ -47,9 +47,11 @@ const Template: StoryFn<typeof VirtualScroller> = (_, { allArgs, loaded }) => {
           <b style="position: absolute; top: 0; right: 0;">
             Rendered items {{itemsToShow.length}} of {{ props.items.length }}
           </b>
+          <ul>
             <li v-for="item in itemsToShow" :key="item.id" style="height: 60px;">
               {{ item.id }}
             </li>
+          <ul>
         </template>
       </VirtualScroller>
     `

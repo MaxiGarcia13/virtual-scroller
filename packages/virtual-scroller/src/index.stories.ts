@@ -51,7 +51,7 @@ const Template: StoryFn<typeof VirtualScroller> = (_, { allArgs, loaded }) => {
             <li v-for="item in itemsToShow" :key="item.id" style="height: 60px;">
               {{ item.id }}
             </li>
-          <ul>
+          </ul>
         </template>
       </VirtualScroller>
     `

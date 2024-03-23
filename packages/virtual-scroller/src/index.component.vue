@@ -1,21 +1,25 @@
 <template>
-  <div ref="virtualScroller" @scroll="onScroll" :class="`${baseClass}`">
+  <div ref="virtualScroller" @scroll="onScroll" class="virtual-scroller">
+    <ObserveComponent @visible="onObserve('start')" class="observe-component" :style="{ top:`${distance}px` }"/>
     <div :style="wrapperStyles">
       <div :style="listStyles">
         <slot :itemsToShow="itemsToShow" />
       </div>
     </div>
+    <ObserveComponent @visible="onObserve('end')" class="observe-component" :style="{ bottom:`${distance}px` }"/>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch, PropType, onMounted, SetupContext } from 'vue';
-import { VirtualScrollerConfig, Element } from './types';
+import { PropType, SetupContext, computed, defineComponent, onMounted, ref, watch } from 'vue';
+import ObserveComponent from './observe.component.vue';
+import { Element, VirtualScrollerConfig } from './types';
 
 const OFFSET_VISIBLE_NODES = 5;
 
 export default defineComponent({
   name: 'VirtualScroller',
+  components: { ObserveComponent },
   props: {
     items: {
       type: Array as PropType<Array<unknown>>,
@@ -27,10 +31,19 @@ export default defineComponent({
     },
     distance: {
       type: Number,
-      default: undefined
+      default: 0
     }
   },
-  emits: ['almost-in-the-start', 'almost-in-the-end'],
+  emits: [
+    /**
+     * emit an event when the scroll is almost in the start
+    */
+    'almost-in-the-start',
+    /**
+     * emit an event when the scroll is almost in the end
+    */
+    'almost-in-the-end'
+  ],
   setup: function (props, { emit }: SetupContext) {
     const virtualScroller = ref<Element>();
 
@@ -54,18 +67,6 @@ export default defineComponent({
       );
     });
 
-    const handleEmits = (element: Element)=> {
-      if(typeof props.distance === 'number') {
-        if(config.value.startNode < props.distance) {
-          emit('almost-in-the-start');
-        }
-
-        if(config.value.startNode * config.value.visibleNodes > element.scrollHeight - props.distance) {
-          emit('almost-in-the-end');
-        }
-      }
-    };
-
     const getConfig = (element: Element): VirtualScrollerConfig => {
       const startNode = Math.floor(element.scrollTop / props.rowHeight);
       const visibleNodes = Math.ceil(element.offsetHeight / props.rowHeight);
@@ -77,7 +78,7 @@ export default defineComponent({
     };
 
     const updateConfig = (element?: Element): void => {
-      if(element) {
+      if (element) {
         config.value = getConfig(element);
       }
     };
@@ -86,22 +87,25 @@ export default defineComponent({
       const element = event.target as Element;
 
       updateConfig(element);
-      handleEmits(element);
+    };
+
+    const onObserve = (type: 'start' | 'end') => {
+      emit(`almost-in-the-${type}`);
     };
 
     onMounted(() => {
       updateConfig(virtualScroller.value);
     });
 
-    watch(()=> props.items, () => updateConfig(virtualScroller.value));
+    watch(() => props.items, () => updateConfig(virtualScroller.value));
 
     return {
-      baseClass: 'virtual-scroller',
       wrapperStyles,
       listStyles,
       virtualScroller,
       itemsToShow,
-      onScroll
+      onScroll,
+      onObserve
     };
   }
 });
@@ -112,5 +116,9 @@ export default defineComponent({
     height: 100%;
     position: relative;
     overflow: auto;
+  }
+
+  .observe-component {
+    position: relative;
   }
 </style>

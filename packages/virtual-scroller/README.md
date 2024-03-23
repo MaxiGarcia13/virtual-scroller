@@ -1,6 +1,6 @@
-# Vue ui components
+# Virtual Scroller for Vue.js
 
-UI Virtual Scroller for Vue.js
+⚡️ Blazing fast scrolling for any amount of data for Vue 3
 
 > [!warning]
 > 👷🏻‍♂️👷🏼‍♀️  Work in progress

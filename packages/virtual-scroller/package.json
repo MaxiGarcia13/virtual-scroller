@@ -1,9 +1,24 @@
 {
-  "name": "virtual-scroller",
-  "version": "1.0.0",
+  "name": "@maxigarcia13/virtual-scroller",
+  "version": "0.1.0",
   "description": "⚡️ Blazing fast scrolling for any amount of data for Vue 3",
+  "author": "Maximiliano Daniel Garcia",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/virtual-scroller.umd.js",
+  "module": "./dist/virtual-scroller.es.js",
+  "types": "./dist/types",
+  "exports": {
+    ".": {
+      "import": "./dist/virtual-scroller.es.js",
+      "require": "./dist/virtual-scroller.umd.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
   "scripts": {
-    "build": "vue-tsc && vite build"
+    "build": "vite build && vue-tsc --emitDeclarationOnly "
   },
   "keywords": [
     "vue",
@@ -15,7 +30,6 @@
     "type": "git",
     "url": "git+https://github.com/MaxiGarcia13/virtual-scroller.git"
   },
-  "author": "Maximiliano Daniel Garcia",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MaxiGarcia13/virtual-scroller/issues"
